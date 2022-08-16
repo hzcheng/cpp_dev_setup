@@ -1,10 +1,10 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.241.1/containers/docker-from-docker-compose
 {
-	"name": "CPP DEV 2",
+	"name": "CPP DEV 3",
 	"dockerComposeFile": "../docker-compose.yml",
-	"service": "cpp_dev_2",
-	"workspaceFolder": "/workspace/cpp_dev_2",
+	"service": "cpp_dev_3",
+	"workspaceFolder": "/workspace/cpp_dev_3",
 	// Use this environment variable if you need to bind mount your local source code into a new container.
 	"remoteEnv": {
 		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
