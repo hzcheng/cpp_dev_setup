@@ -7,6 +7,9 @@ FROM mcr.microsoft.com/vscode/devcontainers/cpp:0-${VARIANT}
 # COPY ./config/sources.list /etc/apt/sources.list
 COPY ./config/tmux.conf /root/.tmux.conf
 
+ENV TZ="Asia/Shanghai"
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # [Optional] Uncomment this section to install additional packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
