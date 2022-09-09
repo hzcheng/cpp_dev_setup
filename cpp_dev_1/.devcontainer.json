@@ -24,7 +24,8 @@
 				"spmeesseman.vscode-taskexplorer",
 				"cschlosser.doxdocgen",
 				"urosvujosevic.explorer-manager",
-				"mhutchie.git-graph"
+				"mhutchie.git-graph",
+				"ms-python.python"
 			]
 		}
 	},
