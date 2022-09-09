@@ -13,4 +13,4 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # [Optional] Uncomment this section to install additional packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
-RUN apt-get update && apt-get -y install tree vim tmux python3-pip linux-tools-5.15.0-41-generic libjansson-dev libsnappy-dev liblzma-dev libz-dev pkg-config libssl-dev
+RUN apt-get update && apt-get -y install tree vim tmux python3-pip linux-tools-5.15.0-41-generic libjansson-dev libsnappy-dev liblzma-dev libz-dev pkg-config libssl-dev tldr
