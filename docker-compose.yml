@@ -53,6 +53,9 @@ services:
       # Project volume
       - projects:/root/workspace/
 
+      # Limitd volume
+      - limitd:/root/limitd/
+
     # Overrides default command so things don't shut down after the process ends.
     # entrypoint: /usr/local/share/docker-init.sh
     command: bash
@@ -104,4 +107,8 @@ services:
 
 volumes:
   projects:
+    external: true
+  # https://gist.github.com/devops-school/471f0d11c49142c61b3fae5eb91caf0f
+  # docker volume create --driver local --opt type=tmpfs --opt device=tmpfs --opt o=size=1000m,uid=1000 limitd
+  limitd:
     external: true
