@@ -26,7 +26,8 @@
 				"ms-python.python",
 				"github.copilot",
 				"twxs.cmake",
-				"github.vscode-pull-request-github"
+				"github.vscode-pull-request-github",
+				"llvm-vs-code-extensions.vscode-clangd",
 			]
 		}
 	},
