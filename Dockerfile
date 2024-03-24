@@ -24,4 +24,6 @@ RUN apt-get update && apt-get -y install\
     libz-dev\
     pkg-config\
     libssl-dev\
-    tldr
+    tldr\
+    nodejs\
+    clangd-15
