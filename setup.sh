@@ -1,55 +1,58 @@
 #!/bin/bash
 
-NUM_CONTAINERS=1
+NUM_CONTAINERS=5
 CONTAINER_PREFIX=cpp_dev_
 
 # generate devcontainer.json
 for ((i=1; i<=NUM_CONTAINERS; i++)); do
     mkdir -p container$i
-    echo '' > container$i/devcontainer.json
-    echo '// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:' >> container$i/devcontainer.json
-    echo '// https://github.com/microsoft/vscode-dev-containers/tree/v0.241.1/containers/docker-from-docker-compose' >> container$i/devcontainer.json
-    echo '{' >> container$i/devcontainer.json
-    echo "	\"name\": \"${CONTAINER_PREFIX}-$i\"," >> container$i/devcontainer.json
-    echo '	"dockerComposeFile": "../docker-compose.yml",' >> container$i/devcontainer.json
-    echo "	\"service\": \"${CONTAINER_PREFIX}$i\"," >> container$i/devcontainer.json
-    echo "	\"workspaceFolder\": \"/workspace/container$i\"," >> container$i/devcontainer.json
-    echo '	// Use this environment variable if you need to bind mount your local source code into a new container.' >> container$i/devcontainer.json
-    echo '	"remoteEnv": {' >> container$i/devcontainer.json
-    echo '		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"' >> container$i/devcontainer.json
-    echo '	},' >> container$i/devcontainer.json
-    echo '	// Configure tool-specific properties.' >> container$i/devcontainer.json
-    echo '	"customizations": {' >> container$i/devcontainer.json
-    echo '		// Configure properties specific to VS Code.' >> container$i/devcontainer.json
-    echo '		"vscode": {' >> container$i/devcontainer.json
-    echo '			// Add the IDs of extensions you want installed when the container is created.' >> container$i/devcontainer.json
-    echo '			"extensions": [' >> container$i/devcontainer.json
-    echo '				"ms-vscode.cpptools",' >> container$i/devcontainer.json
-    echo '				"ms-vscode.cmake-tools",' >> container$i/devcontainer.json
-    echo '				"visualstudioexptteam.vscodeintel",' >> container$i/devcontainer.json
-    echo '				"eamodio.gitlens",' >> container$i/devcontainer.json
-    echo '				"matepek.vscode-catch2-test-adapter",' >> container$i/devcontainer.json
-    echo '				"spmeesseman.vscode-taskexplorer",' >> container$i/devcontainer.json
-    echo '				"urosvujosevic.explorer-manager",' >> container$i/devcontainer.json
-    echo '				"mhutchie.git-graph",' >> container$i/devcontainer.json
-    echo '				"ms-python.python",' >> container$i/devcontainer.json
-    echo '				"github.copilot",' >> container$i/devcontainer.json
-    echo '				"twxs.cmake",' >> container$i/devcontainer.json
-    echo '				"github.vscode-pull-request-github",' >> container$i/devcontainer.json
-    echo '				"llvm-vs-code-extensions.vscode-clangd"' >> container$i/devcontainer.json
-    echo '			]' >> container$i/devcontainer.json
-    echo '		}' >> container$i/devcontainer.json
-    echo '	},' >> container$i/devcontainer.json
-    echo '	"shutdownAction": "none",' >> container$i/devcontainer.json
-    echo '	// Use 'forwardPorts' to make a list of ports inside the container available locally.' >> container$i/devcontainer.json
-    echo '	// "forwardPorts": [],' >> container$i/devcontainer.json
-    echo '	// Use 'postCreateCommand' to run commands after the container is created.' >> container$i/devcontainer.json
-    echo '	"postCreateCommand": [' >> container$i/devcontainer.json
-    echo '		"python3 -m pip install taospy numpy fabric2 psutil pandas"' >> container$i/devcontainer.json
-    echo '	],' >> container$i/devcontainer.json
-    echo '	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.' >> container$i/devcontainer.json
-    echo '	"remoteUser": "root"' >> container$i/devcontainer.json
-    echo '}' >> container$i/devcontainer.json
+
+    CONTAINER_CONFIG_FILE=container$i/.devcontainer.json
+
+    echo '' > ${CONTAINER_CONFIG_FILE}
+    echo '// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:' >> ${CONTAINER_CONFIG_FILE}
+    echo '// https://github.com/microsoft/vscode-dev-containers/tree/v0.241.1/containers/docker-from-docker-compose' >> ${CONTAINER_CONFIG_FILE}
+    echo '{' >> ${CONTAINER_CONFIG_FILE}
+    echo "	\"name\": \"container-$i\"," >> ${CONTAINER_CONFIG_FILE}
+    echo '	"dockerComposeFile": "../docker-compose.yml",' >> ${CONTAINER_CONFIG_FILE}
+    echo "	\"service\": \"${CONTAINER_PREFIX}$i\"," >> ${CONTAINER_CONFIG_FILE}
+    echo "	\"workspaceFolder\": \"/workspace/container$i\"," >> ${CONTAINER_CONFIG_FILE}
+    echo '	// Use this environment variable if you need to bind mount your local source code into a new container.' >> ${CONTAINER_CONFIG_FILE}
+    echo '	"remoteEnv": {' >> ${CONTAINER_CONFIG_FILE}
+    echo '		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"' >> ${CONTAINER_CONFIG_FILE}
+    echo '	},' >> ${CONTAINER_CONFIG_FILE}
+    echo '	// Configure tool-specific properties.' >> ${CONTAINER_CONFIG_FILE}
+    echo '	"customizations": {' >> ${CONTAINER_CONFIG_FILE}
+    echo '		// Configure properties specific to VS Code.' >> ${CONTAINER_CONFIG_FILE}
+    echo '		"vscode": {' >> ${CONTAINER_CONFIG_FILE}
+    echo '			// Add the IDs of extensions you want installed when the container is created.' >> ${CONTAINER_CONFIG_FILE}
+    echo '			"extensions": [' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"ms-vscode.cpptools",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"ms-vscode.cmake-tools",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"visualstudioexptteam.vscodeintel",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"eamodio.gitlens",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"matepek.vscode-catch2-test-adapter",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"spmeesseman.vscode-taskexplorer",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"urosvujosevic.explorer-manager",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"mhutchie.git-graph",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"ms-python.python",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"github.copilot",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"twxs.cmake",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"github.vscode-pull-request-github",' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"llvm-vs-code-extensions.vscode-clangd"' >> ${CONTAINER_CONFIG_FILE}
+    echo '			]' >> ${CONTAINER_CONFIG_FILE}
+    echo '		}' >> ${CONTAINER_CONFIG_FILE}
+    echo '	},' >> ${CONTAINER_CONFIG_FILE}
+    echo '	"shutdownAction": "none",' >> ${CONTAINER_CONFIG_FILE}
+    echo '	// Use 'forwardPorts' to make a list of ports inside the container available locally.' >> ${CONTAINER_CONFIG_FILE}
+    echo '	// "forwardPorts": [],' >> ${CONTAINER_CONFIG_FILE}
+    echo '	// Use 'postCreateCommand' to run commands after the container is created.' >> ${CONTAINER_CONFIG_FILE}
+    echo '	"postCreateCommand": [' >> ${CONTAINER_CONFIG_FILE}
+    echo '		"python3 -m pip install taospy numpy fabric2 psutil pandas"' >> ${CONTAINER_CONFIG_FILE}
+    echo '	],' >> ${CONTAINER_CONFIG_FILE}
+    echo '	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.' >> ${CONTAINER_CONFIG_FILE}
+    echo '	"remoteUser": "root"' >> ${CONTAINER_CONFIG_FILE}
+    echo '}' >> ${CONTAINER_CONFIG_FILE}
 done
 
 # generate docker-compose.yml
