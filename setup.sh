@@ -3,6 +3,9 @@
 NUM_CONTAINERS=5
 CONTAINER_PREFIX=cpp_dev_
 
+docker volume create projects
+docker volume create dump
+
 # generate devcontainer.json
 for ((i=1; i<=NUM_CONTAINERS; i++)); do
     mkdir -p container$i
@@ -78,6 +81,7 @@ for ((i=1; i<=NUM_CONTAINERS; i++)); do
     echo "      - .:/workspace:cached" >> docker-compose.yml
     echo "      # Project volume" >> docker-compose.yml
     echo "      - projects:/root/workspace/" >> docker-compose.yml
+    echo "      - dump:/mnt/wslg/dumps/" >> docker-compose.yml
     echo "    # Overrides default command so things don't shut down after the process ends." >> docker-compose.yml
     echo "    # entrypoint: /usr/local/share/docker-init.sh" >> docker-compose.yml
     echo "    command: bash" >> docker-compose.yml
@@ -94,6 +98,8 @@ for ((i=1; i<=NUM_CONTAINERS; i++)); do
 done
 echo "volumes:" >> docker-compose.yml
 echo "  projects:" >> docker-compose.yml
+echo "    external: true" >> docker-compose.yml
+echo "  dump:" >> docker-compose.yml
 echo "    external: true" >> docker-compose.yml
 echo "  # https://gist.github.com/devops-school/471f0d11c49142c61b3fae5eb91caf0f" >> docker-compose.yml
 echo "  # docker volume create --driver local --opt type=tmpfs --opt device=tmpfs --opt o=size=1000m,uid=1000 limitd" >> docker-compose.yml
