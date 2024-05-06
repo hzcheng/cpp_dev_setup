@@ -6,6 +6,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    ulimits:
+      core:
+        soft: -1
+        hard: -1
     tty: true
     container_name: cpp_dev_1
     volumes:
@@ -26,68 +30,70 @@ services:
       - seccomp:unconfined
     # Uncomment the next line to use a non-root user for all processes.
     # user: root
-    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
-    # (Adding the "ports" property to this file will not forward from a Codespace.)
-
-    # cpp_dev_2:
-    #   image: hzcheng/hz-cpp-dev
-    #   build:
-    #     context: .
-    #     dockerfile: Dockerfile
-    #   tty: true
-    #   container_name: cpp_dev_2
-    #   volumes:
-    #     # Forwards the local Docker socket to the container.
-    #     - /var/run/docker.sock:/var/run/docker-host.sock
-    #     # Update this to wherever you want VS Code to mount the folder of your project
-    #     - .:/workspace:cached
-    #     # Project volume
-    #     - projects:/root/workspace/
-    #     # # Limitd volume
-    #     # - limitd:/root/limitd/
-    #     # Overrides default command so things don't shut down after the process ends.
-    #     # entrypoint: /usr/local/share/docker-init.sh
-    #   command: bash
-    #   # Uncomment the next four lines if you will use a ptrace-based debuggers like C++, Go, and Rust.
-    #   cap_add:
-    #     - SYS_PTRACE
-    #     - SYS_ADMIN
-    #   security_opt:
-    #     - seccomp:unconfined
-    #   # Uncomment the next line to use a non-root user for all processes.
-    #   # user: root
-    #   # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
-    #   # (Adding the "ports" property to this file will not forward from a Codespace.)
-
-    # cpp_dev_3:
-    #   image: hzcheng/hz-cpp-dev
-    #   build:
-    #     context: .
-    #     dockerfile: Dockerfile
-    #   tty: true
-    #   container_name: cpp_dev_3
-    #   volumes:
-    #     # Forwards the local Docker socket to the container.
-    #     - /var/run/docker.sock:/var/run/docker-host.sock
-    #     # Update this to wherever you want VS Code to mount the folder of your project
-    #     - .:/workspace:cached
-    #     # Project volume
-    #     - projects:/root/workspace/
-    #   # Overrides default command so things don't shut down after the process ends.
-    #   # entrypoint: /usr/local/share/docker-init.sh
-    #   command: bash
-    #   # Uncomment the next four lines if you will use a ptrace-based debuggers like C++, Go, and Rust.
-    #   cap_add:
-    #     - SYS_PTRACE
-    #     - SYS_ADMIN
-    #   security_opt:
-    #     - seccomp:unconfined
-    #   # Uncomment the next line to use a non-root user for all processes.
-    #   # user: root
-    #   # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
-    #   # (Adding the "ports" property to this file will not forward from a Codespace.)
-
-
+    # Use forwardPorts in **devcontainer.json** to forward an app port locally. 
+    # (Adding the ports property to this file will not forward from a Codespace.)
+  cpp_dev_2:
+    image: hzcheng/hz-cpp-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ulimits:
+      core:
+        soft: -1
+        hard: -1
+    tty: true
+    container_name: cpp_dev_2
+    volumes:
+      # Forwards the local Docker socket to the container.
+      - /var/run/docker.sock:/var/run/docker-host.sock
+      # Update this to wherever you want VS Code to mount the folder of your project
+      - .:/workspace:cached
+      # Project volume
+      - projects:/root/workspace/
+    # Overrides default command so things don't shut down after the process ends.
+    # entrypoint: /usr/local/share/docker-init.sh
+    command: bash
+    # Uncomment the next four lines if you will use a ptrace-based debuggers like C++, Go, and Rust.
+    cap_add:
+      - SYS_PTRACE
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    # Uncomment the next line to use a non-root user for all processes.
+    # user: root
+    # Use forwardPorts in **devcontainer.json** to forward an app port locally. 
+    # (Adding the ports property to this file will not forward from a Codespace.)
+  cpp_dev_3:
+    image: hzcheng/hz-cpp-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ulimits:
+      core:
+        soft: -1
+        hard: -1
+    tty: true
+    container_name: cpp_dev_3
+    volumes:
+      # Forwards the local Docker socket to the container.
+      - /var/run/docker.sock:/var/run/docker-host.sock
+      # Update this to wherever you want VS Code to mount the folder of your project
+      - .:/workspace:cached
+      # Project volume
+      - projects:/root/workspace/
+    # Overrides default command so things don't shut down after the process ends.
+    # entrypoint: /usr/local/share/docker-init.sh
+    command: bash
+    # Uncomment the next four lines if you will use a ptrace-based debuggers like C++, Go, and Rust.
+    cap_add:
+      - SYS_PTRACE
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    # Uncomment the next line to use a non-root user for all processes.
+    # user: root
+    # Use forwardPorts in **devcontainer.json** to forward an app port locally. 
+    # (Adding the ports property to this file will not forward from a Codespace.)
 volumes:
   projects:
     external: true
