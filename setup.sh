@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NUM_CONTAINERS=3
+NUM_CONTAINERS=1
 CONTAINER_PREFIX=cpp_dev_
 
 # generate devcontainer.json
