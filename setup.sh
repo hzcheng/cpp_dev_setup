@@ -10,7 +10,7 @@ for ((i=1; i<=NUM_CONTAINERS; i++)); do
     echo '// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:' >> container$i/devcontainer.json
     echo '// https://github.com/microsoft/vscode-dev-containers/tree/v0.241.1/containers/docker-from-docker-compose' >> container$i/devcontainer.json
     echo '{' >> container$i/devcontainer.json
-    echo "	\"name\": \"${CONTAINER_PREFIX}$i\"," >> container$i/devcontainer.json
+    echo "	\"name\": \"${CONTAINER_PREFIX}-$i\"," >> container$i/devcontainer.json
     echo '	"dockerComposeFile": "../docker-compose.yml",' >> container$i/devcontainer.json
     echo "	\"service\": \"${CONTAINER_PREFIX}$i\"," >> container$i/devcontainer.json
     echo "	\"workspaceFolder\": \"/workspace/container$i\"," >> container$i/devcontainer.json
