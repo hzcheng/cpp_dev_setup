@@ -24,6 +24,9 @@ for ((i=1; i<=NUM_CONTAINERS; i++)); do
     echo '	"remoteEnv": {' >> ${CONTAINER_CONFIG_FILE}
     echo '		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"' >> ${CONTAINER_CONFIG_FILE}
     echo '	},' >> ${CONTAINER_CONFIG_FILE}
+    echo '	"containerEnv": {' >> ${CONTAINER_CONFIG_FILE}
+    echo '		"ASAN_OPTIONS": "abort_on_error=1:disable_coredump=0:unmap_shadow_on_exit=1"' >> ${CONTAINER_CONFIG_FILE}
+    echo '	},' >> ${CONTAINER_CONFIG_FILE}
     echo '	// Configure tool-specific properties.' >> ${CONTAINER_CONFIG_FILE}
     echo '	"customizations": {' >> ${CONTAINER_CONFIG_FILE}
     echo '		// Configure properties specific to VS Code.' >> ${CONTAINER_CONFIG_FILE}
@@ -43,6 +46,7 @@ for ((i=1; i<=NUM_CONTAINERS; i++)); do
     echo '				"twxs.cmake",' >> ${CONTAINER_CONFIG_FILE}
     echo '				"github.vscode-pull-request-github",' >> ${CONTAINER_CONFIG_FILE}
     echo '				"llvm-vs-code-extensions.vscode-clangd"' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"liangqin.quick-notes"' >> ${CONTAINER_CONFIG_FILE}
     echo '			]' >> ${CONTAINER_CONFIG_FILE}
     echo '		}' >> ${CONTAINER_CONFIG_FILE}
     echo '	},' >> ${CONTAINER_CONFIG_FILE}
