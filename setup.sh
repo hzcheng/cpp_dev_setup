@@ -55,7 +55,7 @@ for ((i=1; i<=NUM_CONTAINERS; i++)); do
     echo '	// "forwardPorts": [],' >> ${CONTAINER_CONFIG_FILE}
     echo '	// Use 'postCreateCommand' to run commands after the container is created.' >> ${CONTAINER_CONFIG_FILE}
     echo '	"postCreateCommand": [' >> ${CONTAINER_CONFIG_FILE}
-    echo '		"python3 -m pip install taospy numpy fabric2 psutil pandas toml distro"' >> ${CONTAINER_CONFIG_FILE}
+    echo '		"python3 -m pip install taospy numpy fabric2 psutil pandas toml distro taos-ws-py"' >> ${CONTAINER_CONFIG_FILE}
     echo '	],' >> ${CONTAINER_CONFIG_FILE}
     echo '	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.' >> ${CONTAINER_CONFIG_FILE}
     echo '	"remoteUser": "root"' >> ${CONTAINER_CONFIG_FILE}
