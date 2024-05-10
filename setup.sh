@@ -46,7 +46,7 @@ for ((i=1; i<=NUM_CONTAINERS; i++)); do
     echo '				"twxs.cmake",' >> ${CONTAINER_CONFIG_FILE}
     echo '				"github.vscode-pull-request-github",' >> ${CONTAINER_CONFIG_FILE}
     echo '				"llvm-vs-code-extensions.vscode-clangd"' >> ${CONTAINER_CONFIG_FILE}
-    echo '				"liangqin.quick-notes"' >> ${CONTAINER_CONFIG_FILE}
+    echo '				"liangqin.quick-notes",' >> ${CONTAINER_CONFIG_FILE}
     echo '				"yzhang.markdown-all-in-one"' >> ${CONTAINER_CONFIG_FILE}
     echo '			]' >> ${CONTAINER_CONFIG_FILE}
     echo '		}' >> ${CONTAINER_CONFIG_FILE}
