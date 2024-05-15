@@ -32,7 +32,8 @@
                 "github.vscode-pull-request-github",
                 "llvm-vs-code-extensions.vscode-clangd",
                 "liangqin.quick-notes",
-                "ritwickdey.liveserver"
+                "ritwickdey.liveserver",
+                "bierner.markdown-checkbox"
             ]
         }
     },
