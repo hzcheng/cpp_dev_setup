@@ -27,4 +27,5 @@ RUN apt-get update && apt-get -y install\
     libssl-dev\
     tldr\
     nodejs\
-    clangd-15
+    clangd-15\
+    graphviz\
