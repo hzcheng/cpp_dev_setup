@@ -8,7 +8,16 @@ FROM mcr.microsoft.com/vscode/devcontainers/cpp:${VARIANT}
 ENV TZ="Asia/Shanghai"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY ./config/sources.list /etc/apt/sources.list
+# change apt source
+COPY ./config/sources.list.amd64 /etc/apt/sources.list.amd64
+COPY ./config/sources.list.arm64 /etc/apt/sources.list.arm64
+RUN if [ "$(uname -m)" = "x86_64" ]; then \
+    mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
+    cp /etc/apt/sources.list.amd64 /etc/apt/sources.list; \
+    elif [ "$(uname -m)" = "aarch64" ]; then \
+    mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
+    cp /etc/apt/sources.list.arm64 /etc/apt/sources.list; \
+    fi
 COPY ./config/tmux.conf /root/.tmux.conf
 
 # [Optional] Uncomment this section to install additional packages.
@@ -28,4 +37,4 @@ RUN apt-get update && apt-get -y install\
     tldr\
     nodejs\
     clangd-15\
-    graphviz\
+    graphviz
