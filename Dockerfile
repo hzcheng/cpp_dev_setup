@@ -37,4 +37,5 @@ RUN apt-get update && apt-get -y install\
     tldr\
     nodejs\
     clangd-15\
-    graphviz
+    graphviz\
+    inetutils-ping
