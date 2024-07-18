@@ -38,4 +38,5 @@ RUN apt-get update && apt-get -y install\
     nodejs\
     clangd-15\
     graphviz\
+    clang-tidy\
     inetutils-ping
